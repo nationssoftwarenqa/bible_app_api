@@ -3,10 +3,17 @@ const xpath = require('cypress-xpath');
 
 Given("I visit bible app online", () => {
     let response
+    let data
     cy.request(
         'GET', 
-        'https://www.bible.com/_next/data/pHrtrS8FuIVdpzHVps2UJ///en/bible/111/MRK.14.NIV.json?versionId=111&usfm=MRK.14.NIV')
+        '/_next/data/pHrtrS8FuIVdpzHVps2UJ///en/bible/111/MRK.14.NIV.json?versionId=111&usfm=MRK.14.NIV')
         .then((response) => {
-            cy.log(JSON.stringify(response.body.pageProps))
+            data = response.body
+            cy.log(JSON.stringify(data.audioVersionInfo))
           })
       })
+
+Given("response should have mark", () => {
+    
+})
+ 
